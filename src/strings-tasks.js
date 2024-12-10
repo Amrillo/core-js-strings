@@ -484,7 +484,7 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  return str.replace(/[A-Za-z]/g, function (char) {
+  return str.replace(/[A-Za-z]/g, function convert(char) {
     return String.fromCharCode(
       char.charCodeAt(0) + (char.toLowerCase() < 'n' ? 13 : -13)
     );
