@@ -484,14 +484,11 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-  let encoded = '';
-  for (let i = 0; i < str.length; i += 1) {
-    const index = input.indexOf(str[i]);
-    encoded += output[index];
-  }
-  return encoded;
+  return str.replace(/[A-Za-z]/g, function (char) {
+    return String.fromCharCode(
+      char.charCodeAt(0) + (char.toLowerCase() < 'n' ? 13 : -13)
+    );
+  });
 }
 
 /**
